@@ -63,6 +63,34 @@ class AdventureScene extends Phaser.Scene {
         });
     }
 
+    // showMessagelong(message) {
+    //     this.messageBox.setText(message);
+    //     this.tweens.add({
+    //         targets: this.messageBox,
+    //         alpha: { from: 1, to: 0 },
+    //         easing: 'Quintic.in',
+    //         duration: 20 * this.transitionDuration,
+    //         onComplete: () => {
+    //             this.tweens.add({
+    //                 targets: this.inventoryBanner,
+    //                 alpha: 1,
+    //                 duration: this.transitionDuration
+    //             });
+    //         }
+    //     });
+    // }
+
+    showMessagelong(message) {
+        this.messageBox.setText(message);
+        this.messageBox.setStyle({ fontSize: '25px' });
+        this.tweens.add({
+            targets: this.messageBox,
+            alpha: { from: 1, to: 0 },
+            easing: 'Quintic.in',
+            duration: 15 * this.transitionDuration
+        });
+    }
+
     updateInventory() {
         if (this.inventory.length > 0) {
             this.tweens.add({
