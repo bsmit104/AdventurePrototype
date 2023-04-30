@@ -98,7 +98,7 @@ class Demo1 extends AdventureScene {
             })
             .on('pointerdown', () => {
                 if (this.hasItem("Poppy")) {
-                    this.loseItem("Poppy");
+                    //this.loseItem("Poppy");
                     this.showMessage("*la la la*");
                     //door.setText("🚪 unlocked door");
                     this.gotoScene('demo2');
@@ -169,7 +169,17 @@ class Demo2 extends AdventureScene {
                 duration: 500
             });
         })
-        .on('pointerdown', () => this.gotoScene('outro'));
+        .on('pointerdown', () => {
+            this.showMessage("My mom used to say fireflies were good luck.");
+            this.gainItem('Firefly');
+            this.tweens.add({
+                targets: this.flyob,
+                y: `-=${2 * this.s}`,
+                alpha: { from: 1, to: 0 },
+                duration: 500,
+                onComplete: () => this.flyob.destroy()
+            });
+        })
 
 
         this.signob = this.add.image(
@@ -400,7 +410,7 @@ class Scene3 extends AdventureScene {
             .on('pointerdown', () => {
                 this.showMessage("If I was only a dryad, then I would fix it.");
                 this.tweens.add({
-                    targets: stumpob,
+                    targets: this.stumpob,
                     x: '+=' + this.s,
                     repeat: 2,
                     yoyo: true,
@@ -425,7 +435,7 @@ class Scene3 extends AdventureScene {
             .on('pointerdown', () => {
                 this.showMessage("My love, My flower, Rest");
                 this.tweens.add({
-                    targets: graveob,
+                    targets: this.graveob,
                     x: '+=' + this.s,
                     repeat: 2,
                     yoyo: true,
@@ -450,8 +460,89 @@ class Scene4 extends AdventureScene {
     preload() {
         this.load.path = "./assets/";
         this.load.image('cam', 'cam.png');
+        this.load.image('deerman', 'dearthedeer.png');
+        this.load.image('righto', 'deepforest.png');
+        this.load.image('arrowdown', 'arrowdown.png');
     }
     onEnter() {
+            this.arrowdo = this.add.image(
+            100,//x
+            1000,//y
+            'arrowdown',//imagename
+            )
+            this.arrowdo.setDepth(1)
+            this.arrowdo.setScale(.5) //resize
+            //this.arrows.angle = -90
+            .setInteractive()
+            .on('pointerover', () => {
+                this.showMessage("Go back.");
+                // if (this.hasItem("Poppy")) {
+                //     this.showMessage("Maybe there are more flowers in the woods.");
+                // } else {
+                //     this.showMessage("Maybe I should pick a flower before I go since they are so beautiful.");
+                // }
+            })
+            .on('pointerdown', () => {
+                console.log("Clicked on the arrow to go back.");
+                this.gotoScene('demo2');
+            });
+
+
+            this.cam = this.add.image(
+            400,//x
+            800,//y
+            'cam',//imagename
+            )
+            this.cam.setDepth(1)
+            this.cam.setScale(1.5) //resize
+            //let clip = this.add.text(this.w * 0.3, this.w * 0.3, "📎 paperclip")
+            //let cam = this.add.image("cam")
+            //.setFontSize(this.s * 2)
+            .setInteractive()
+            .on('pointerover', () => this.showMessage("I feel like there is a mouse on me."))
+            .on('pointerdown', () => {
+                this.showMessage("Agh!");
+                this.tweens.add({
+                    targets: this.cam,
+                    x: '+=' + this.s,
+                    repeat: 2,
+                    yoyo: true,
+                    ease: 'Sine.inOut',
+                    duration: 100
+                });
+            });
+
+        this.deermanob = this.add.image(
+            900,//x
+            700,//y
+            'deerman',//imagename
+            )
+            this.deermanob.setDepth(1)
+            this.deermanob.setScale(4) //resize
+            //let clip = this.add.text(this.w * 0.3, this.w * 0.3, "📎 paperclip")
+            //let cam = this.add.image("cam")
+            //.setFontSize(this.s * 2)
+            .setInteractive()
+            .on('pointerover', () => this.showMessage("A monster."))
+            .on('pointerdown', () => {
+                this.showMessage("He is in great pain.");
+                this.tweens.add({
+                    targets: this.deermanob,
+                    x: '+=' + this.s,
+                    repeat: 2,
+                    yoyo: true,
+                    ease: 'Sine.inOut',
+                    duration: 100
+                });
+            });
+
+        const forest2 = this.add.image(0, 0, 'righto');
+        forest2.setOrigin(0);
+        forest2.setDepth(0);
+        // this.graveob.background = this.back;
+        this.deermanob.background = this.back;
+        this.cam.background = this.back;
+        this.arrowdo.background = this.back;
     }
 }
 
