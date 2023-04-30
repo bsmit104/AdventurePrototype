@@ -381,18 +381,18 @@ class Scene3 extends AdventureScene {
             //let cam = this.add.image("cam")
             //.setFontSize(this.s * 2)
             .setInteractive()
-            .on('pointerover', () => this.showMessage("I feel like there is a mouse on me."))
-            .on('pointerdown', () => {
-                this.showMessage("Agh!");
-                this.tweens.add({
-                    targets: cam,
-                    x: '+=' + this.s,
-                    repeat: 2,
-                    yoyo: true,
-                    ease: 'Sine.inOut',
-                    duration: 100
-                });
-            });
+            .on('pointerover', () => this.showMessage("I know what it is like to lose someone."))
+            .on('pointerdown', () => this.showMessage("You also really liked flowers.")
+                // this.showMessage("Agh!");
+                // this.tweens.add({
+                //     targets: cam,
+                //     x: '+=' + this.s,
+                //     repeat: 2,
+                //     yoyo: true,
+                //     ease: 'Sine.inOut',
+                //     duration: 100
+                //});
+            );
 
 
         this.stumpob = this.add.image(
@@ -432,16 +432,18 @@ class Scene3 extends AdventureScene {
             //.setFontSize(this.s * 2)
             .setInteractive()
             .on('pointerover', () => this.showMessage("A tombstone."))
+            //.on('keydown-L', () => { 
+            ///////////////////// Leave flower?////////////////////////////////
             .on('pointerdown', () => {
-                this.showMessage("My love, My flower, Rest");
-                this.tweens.add({
-                    targets: this.graveob,
-                    x: '+=' + this.s,
-                    repeat: 2,
-                    yoyo: true,
-                    ease: 'Sine.inOut',
-                    duration: 100
-                });
+                this.showMessage("It reads: My love, My flower, my deer, Rest");
+                // this.tweens.add({
+                //     targets: this.graveob,
+                //     x: '+=' + this.s,
+                //     repeat: 2,
+                //     yoyo: true,
+                //     ease: 'Sine.inOut',
+                //     duration: 100
+                // });
             });
 
         const forestl = this.add.image(0, 0, 'lefto');
