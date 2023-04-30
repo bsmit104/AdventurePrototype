@@ -1,20 +1,25 @@
 class Demo1 extends AdventureScene {
     constructor() {
-        super("demo1", "Garden");
+        super("demo1", "The Meadow");
     }
     preload() {
         this.load.path = "./assets/";
         this.load.image('cam', 'cam.png');
         this.load.image('poppy', 'poppy.png');
+        this.load.image('back', 'back.png');
+        this.load.image('arrow', 'arrow.png');
     }
 
     onEnter() {
-        this.imageObject = this.add.image(
+    // Create a background image
+
+        this.cam = this.add.image(
             400,//x
-            800,//y
+            860,//y
             'cam',//imagename
             )
-            this.imageObject.setScale(1.5) //resize
+            this.cam.setDepth(1)
+            this.cam.setScale(1.5) //resize
         //let clip = this.add.text(this.w * 0.3, this.w * 0.3, "📎 paperclip")
         //let cam = this.add.image("cam")
             //.setFontSize(this.s * 2)
@@ -35,9 +40,10 @@ class Demo1 extends AdventureScene {
             //let key = this.add.text(this.w * 0.5, this.w * 0.1, "🔑 key")
             this.poppy = this.add.image(
                 600,//x
-                880,//y
+                950,//y
                 'poppy',//imagename
                 )
+                this.poppy.setDepth(1)
                 this.poppy.setScale(1) //resize
             //.setFontSize(this.s * 2)
             .setInteractive()
@@ -55,6 +61,7 @@ class Demo1 extends AdventureScene {
                     onComplete: () => this.poppy.destroy()
                 });
             })
+
 
         // let key = this.add.text(this.w * 0.5, this.w * 0.1, "🔑 key")
         //     .setFontSize(this.s * 2)
@@ -74,26 +81,37 @@ class Demo1 extends AdventureScene {
         //         });
         //     })
 
-
-
-        let door = this.add.text(this.w * 0.1, this.w * 0.15, "🚪 locked door")
-            .setFontSize(this.s * 2)
+        this.arrow = this.add.image(
+            1200,//x
+            900,//y
+            'arrow',//imagename
+            )
+            this.arrow.setDepth(1);
+            this.arrow.setScale(.5) //resize
             .setInteractive()
             .on('pointerover', () => {
-                if (this.hasItem("key")) {
-                    this.showMessage("You've got the key for this door.");
+                if (this.hasItem("Poppy")) {
+                    this.showMessage("Maybe there are more flowers in the woods.");
                 } else {
-                    this.showMessage("It's locked. Can you find a key?");
+                    this.showMessage("Maybe I should pick a flower before I go since they are so beautiful.");
                 }
             })
             .on('pointerdown', () => {
-                if (this.hasItem("key")) {
-                    this.loseItem("key");
-                    this.showMessage("*squeak*");
-                    door.setText("🚪 unlocked door");
+                if (this.hasItem("Poppy")) {
+                    this.loseItem("Poppy");
+                    this.showMessage("*la la la*");
+                    //door.setText("🚪 unlocked door");
                     this.gotoScene('demo2');
                 }
             })
+
+            const myBackground = this.add.image(0, 0, 'back');
+            myBackground.setOrigin(0);
+            myBackground.setDepth(0);
+            //myBackground.setScale(myImage.width / myBackground.width, myImage.height / myBackground.height);
+            poppy.background = back;
+            cam.background = back;
+            arrow.background = back;
         // let door = this.add.text(this.w * 0.1, this.w * 0.15, "🚪 locked door")
         //     .setFontSize(this.s * 2)
         //     .setInteractive()
@@ -118,19 +136,136 @@ class Demo1 extends AdventureScene {
 
 class Demo2 extends AdventureScene {
     constructor() {
-        super("demo2", "The second room has a long name (it truly does).");
+        super("demo2", "The Woods.");
     }
+    preload() {
+        this.load.path = "./assets/";
+        this.load.image('cam', 'cam.png');
+        this.load.image('forest', 'forestback.png');
+        this.load.image('sign', 'sign.png');
+        this.load.image('arrowdown', 'arrowdown.png');
+        this.load.image('arrowslant', 'arrowslant.png');
+    }
+
     onEnter() {
-        this.add.text(this.w * 0.3, this.w * 0.4, "just go back")
-            .setFontSize(this.s * 2)
+        this.signob = this.add.image(
+            800,//x
+            820,//y
+            'sign',//imagename
+            )
+            this.signob.setDepth(1)
+            this.signob.setScale(.3) //resize
+            //let clip = this.add.text(this.w * 0.3, this.w * 0.3, "📎 paperclip")
+            //let cam = this.add.image("cam")
+            //.setFontSize(this.s * 2)
             .setInteractive()
-            .on('pointerover', () => {
-                this.showMessage("You've got no other choice, really.");
-            })
+            .on('pointerover', () => this.showMessage("A sign."))
             .on('pointerdown', () => {
-                this.gotoScene('demo1');
+                this.showMessage("One can go right, or one can go left!");
+                this.tweens.add({
+                    targets: sign,
+                    x: '+=' + this.s,
+                    repeat: 2,
+                    yoyo: true,
+                    ease: 'Sine.inOut',
+                    duration: 100
+                });
             });
 
+        this.cam = this.add.image(
+            400,//x
+            800,//y
+            'cam',//imagename
+            )
+            this.cam.setDepth(1)
+            this.cam.setScale(1.5) //resize
+            //let clip = this.add.text(this.w * 0.3, this.w * 0.3, "📎 paperclip")
+            //let cam = this.add.image("cam")
+            //.setFontSize(this.s * 2)
+            .setInteractive()
+            .on('pointerover', () => this.showMessage("I feel like there is a mouse on me."))
+            .on('pointerdown', () => {
+                this.showMessage("Agh!");
+                this.tweens.add({
+                    targets: cam,
+                    x: '+=' + this.s,
+                    repeat: 2,
+                    yoyo: true,
+                    ease: 'Sine.inOut',
+                    duration: 100
+                });
+            });
+
+
+            this.arrowd = this.add.image(
+                770,//x
+                1000,//y
+                'arrowdown',//imagename
+                )
+                this.arrowd.setDepth(1);
+                this.arrowd.setScale(.5) //resize
+                .setInteractive()
+                .on('pointerover', () => {
+                    this.showMessage("Right.");
+                    // if (this.hasItem("Poppy")) {
+                    //     this.showMessage("Maybe there are more flowers in the woods.");
+                    // } else {
+                    //     this.showMessage("Maybe I should pick a flower before I go since they are so beautiful.");
+                    // }
+                })
+                .on('pointerdown', () => {
+                    // if (this.hasItem("Poppy")) {
+                    //     this.loseItem("Poppy");
+                        this.showMessage("Kinda creepy..");
+                        //door.setText("🚪 unlocked door");
+                        this.gotoScene('scene4');
+                    //}
+                })
+
+                this.arrows = this.add.image(
+                    1200,//x
+                    880,//y
+                    'arrowslant',//imagename
+                    )
+                    this.arrows.setDepth(1);
+                    this.arrows.angle = 20;
+                    this.arrows.setScale(.5) //resize
+                    .setInteractive()
+                    .on('pointerover', () => {
+                        this.showMessage("Left.");
+                        // if (this.hasItem("Poppy")) {
+                        //     this.showMessage("Maybe there are more flowers in the woods.");
+                        // } else {
+                        //     this.showMessage("Maybe I should pick a flower before I go since they are so beautiful.");
+                        // }
+                    })
+                    .on('pointerdown', () => {
+                        // if (this.hasItem("Poppy")) {
+                        //     this.loseItem("Poppy");
+                            this.showMessage("It is getting chilly.");
+                            //door.setText("🚪 unlocked door");
+                            this.gotoScene('scene3');
+                        //}
+                    })
+                    const forestb = this.add.image(0, 0, 'forest');
+                    forestb.setOrigin(0);
+                    forestb.setDepth(0);
+                    poppy.background = back;
+                    arrowd.background = back;
+                    arrows.background = back;
+
+        // this.add.text(this.w * 0.3, this.w * 0.4, "just go back")
+        //     .setFontSize(this.s * 2)
+        //     .setInteractive()
+        //     .on('pointerover', () => {
+        //         this.showMessage("You've got no other choice, really.");
+        //     })
+        //     .on('pointerdown', () => {
+        //         this.gotoScene('demo1');
+        //     });
+
+
+        //make firefly
         let finish = this.add.text(this.w * 0.6, this.w * 0.2, '(finish the game)')
             .setInteractive()
             .on('pointerover', () => {
@@ -144,6 +279,142 @@ class Demo2 extends AdventureScene {
                 });
             })
             .on('pointerdown', () => this.gotoScene('outro'));
+
+            // const forest = this.add.image(0, 0, 'forestback');
+            // forest.setOrigin(0);
+            // forest.setDepth(0);
+            //forest.setScale(myImage.width / forest.width, myImage.height / myBackground.height);
+    }
+}
+
+
+class Scene3 extends AdventureScene {
+    constructor() {
+        super("scene3", "The Cemetery.");
+    }
+    preload() {
+        this.load.path = "./assets/";
+        this.load.image('cam', 'cam.png');
+        this.load.image('lefto', 'left.png');
+        this.load.image('grave1', 'grave1.png');
+        this.load.image('stump', 'stump.png');
+        this.load.image('arrowdown', 'arrowdown.png');
+    }
+    onEnter() {
+        this.arrowdo = this.add.image(
+            100,//x
+            1000,//y
+            'arrowdown',//imagename
+            )
+            this.arrowdo.setDepth(1);
+            this.arrowdo.setScale(.5) //resize
+            //this.arrows.angle = -90
+            .setInteractive()
+            .on('pointerover', () => {
+                this.showMessage("Go back.");
+                // if (this.hasItem("Poppy")) {
+                //     this.showMessage("Maybe there are more flowers in the woods.");
+                // } else {
+                //     this.showMessage("Maybe I should pick a flower before I go since they are so beautiful.");
+                // }
+            })
+            .on('pointerdown', () => {
+                this.gotoScene('demo2');
+            });
+       
+        
+        this.cam = this.add.image(
+            300,//x
+            800,//y
+            'cam',//imagename
+            )
+            this.cam.setDepth(1)
+            this.cam.setScale(2) //resize
+            //let clip = this.add.text(this.w * 0.3, this.w * 0.3, "📎 paperclip")
+            //let cam = this.add.image("cam")
+            //.setFontSize(this.s * 2)
+            .setInteractive()
+            .on('pointerover', () => this.showMessage("I feel like there is a mouse on me."))
+            .on('pointerdown', () => {
+                this.showMessage("Agh!");
+                this.tweens.add({
+                    targets: cam,
+                    x: '+=' + this.s,
+                    repeat: 2,
+                    yoyo: true,
+                    ease: 'Sine.inOut',
+                    duration: 100
+                });
+            });
+
+
+        this.stumpob = this.add.image(
+            800,//x
+            1000,//y
+            'stump',//imagename
+            )
+            this.stumpob.setDepth(1)
+            this.stumpob.setScale(.4) //resize
+            //let clip = this.add.text(this.w * 0.3, this.w * 0.3, "📎 paperclip")
+            //let cam = this.add.image("cam")
+            //.setFontSize(this.s * 2)
+            .setInteractive()
+            .on('pointerover', () => this.showMessage("Something must have been angry."))
+            .on('pointerdown', () => {
+                this.showMessage("If I was only a dryad, then I would fix it.");
+                this.tweens.add({
+                    targets: stumpob,
+                    x: '+=' + this.s,
+                    repeat: 2,
+                    yoyo: true,
+                    ease: 'Sine.inOut',
+                    duration: 100
+                });
+            });
+
+
+        this.graveob = this.add.image(
+            500,//x
+            700,//y
+            'grave1',//imagename
+            )
+            this.graveob.setDepth(1)
+            this.graveob.setScale(1) //resize
+            //let clip = this.add.text(this.w * 0.3, this.w * 0.3, "📎 paperclip")
+            //let cam = this.add.image("cam")
+            //.setFontSize(this.s * 2)
+            .setInteractive()
+            .on('pointerover', () => this.showMessage("A tombstone."))
+            .on('pointerdown', () => {
+                this.showMessage("My love, My flower, Rest");
+                this.tweens.add({
+                    targets: graveob,
+                    x: '+=' + this.s,
+                    repeat: 2,
+                    yoyo: true,
+                    ease: 'Sine.inOut',
+                    duration: 100
+                });
+            });
+
+        const forestl = this.add.image(0, 0, 'lefto');
+        forestl.setOrigin(0);
+        forestl.setDepth(0);
+        graveob.background = back;
+        arrowdo.background = back;
+        cam.background = back;
+    }
+}
+
+class Scene4 extends AdventureScene {
+    constructor() {
+        super("scene4", "Deeper Forest");
+    }
+    preload() {
+        this.load.path = "./assets/";
+        this.load.image('cam', 'cam.png');
+    }
+    onEnter() {
     }
 }
 
@@ -276,7 +547,7 @@ const game = new Phaser.Game({
         width: 1920,
         height: 1080
     },
-    scene: [S0, Intro, Demo1, Demo2, Outro],
+    scene: [S0, Intro, Demo1, Demo2, Scene3, Scene4, Outro],
     title: "Adventure Game",
 });
 
