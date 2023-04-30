@@ -147,4 +147,12 @@ class AdventureScene extends Phaser.Scene {
     onEnter() {
         console.warn('This AdventureScene did not implement onEnter():', this.constructor.name);
     }
+/////////////mine////////////////
+    goBack() {
+        const previousScene = this.scene.getPreviousScene();
+        if (previousScene) {
+          this.scene.stop(this.scene.key); // Stop the current scene
+          this.scene.run(previousScene.scene.key); // Run the previous scene
+        }
+      }
 }

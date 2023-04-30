@@ -109,9 +109,9 @@ class Demo1 extends AdventureScene {
             myBackground.setOrigin(0);
             myBackground.setDepth(0);
             //myBackground.setScale(myImage.width / myBackground.width, myImage.height / myBackground.height);
-            poppy.background = back;
-            cam.background = back;
-            arrow.background = back;
+            this.poppy.background = this.back;
+            this.cam.background = this.back;
+            this.arrow.background = this.back;
         // let door = this.add.text(this.w * 0.1, this.w * 0.15, "🚪 locked door")
         //     .setFontSize(this.s * 2)
         //     .setInteractive()
@@ -163,7 +163,7 @@ class Demo2 extends AdventureScene {
             .on('pointerdown', () => {
                 this.showMessage("One can go right, or one can go left!");
                 this.tweens.add({
-                    targets: sign,
+                    targets: this.signob,
                     x: '+=' + this.s,
                     repeat: 2,
                     yoyo: true,
@@ -187,7 +187,7 @@ class Demo2 extends AdventureScene {
             .on('pointerdown', () => {
                 this.showMessage("Agh!");
                 this.tweens.add({
-                    targets: cam,
+                    targets: this.cam,
                     x: '+=' + this.s,
                     repeat: 2,
                     yoyo: true,
@@ -250,9 +250,8 @@ class Demo2 extends AdventureScene {
                     const forestb = this.add.image(0, 0, 'forest');
                     forestb.setOrigin(0);
                     forestb.setDepth(0);
-                    poppy.background = back;
-                    arrowd.background = back;
-                    arrows.background = back;
+                    this.arrowd.background = this.back;
+                    this.arrows.background = this.back;
 
         // this.add.text(this.w * 0.3, this.w * 0.4, "just go back")
         //     .setFontSize(this.s * 2)
@@ -301,12 +300,27 @@ class Scene3 extends AdventureScene {
         this.load.image('arrowdown', 'arrowdown.png');
     }
     onEnter() {
+        let finish = this.add.text(this.w * 0.6, this.w * 0.2, '(finish the game)')
+        .setInteractive()
+        .on('pointerover', () => {
+            this.showMessage('*giggles*');
+            this.finish.setDepth(1)
+            this.tweens.add({
+                targets: finish,
+                x: this.s + (this.h - 2 * this.s) * Math.random(),
+                y: this.s + (this.h - 2 * this.s) * Math.random(),
+                ease: 'Sine.inOut',
+                duration: 500
+            });
+        })
+        .on('pointerdown', () => this.gotoScene('outro'));
+
         this.arrowdo = this.add.image(
             100,//x
             1000,//y
             'arrowdown',//imagename
             )
-            this.arrowdo.setDepth(1);
+            this.arrowdo.setDepth(1)
             this.arrowdo.setScale(.5) //resize
             //this.arrows.angle = -90
             .setInteractive()
@@ -319,8 +333,19 @@ class Scene3 extends AdventureScene {
                 // }
             })
             .on('pointerdown', () => {
+                console.log("Clicked on the arrow to go back.");
                 this.gotoScene('demo2');
             });
+            ////////////////////////fix me////////////////////////////
+            //.on('pointerdown', () => this.gotoScene('demo2'));
+
+
+
+
+            //arrowdo.on('pointerdown', this.goback, this);
+            // .on('pointerdown', () => {
+            //     this.gotoScene('demo2');
+            // });
        
         
         this.cam = this.add.image(
@@ -400,9 +425,9 @@ class Scene3 extends AdventureScene {
         const forestl = this.add.image(0, 0, 'lefto');
         forestl.setOrigin(0);
         forestl.setDepth(0);
-        graveob.background = back;
-        arrowdo.background = back;
-        cam.background = back;
+        this.graveob.background = this.back;
+        this.arrowdo.background = this.back;
+        this.cam.background = this.back;
     }
 }
 
