@@ -145,9 +145,33 @@ class Demo2 extends AdventureScene {
         this.load.image('sign', 'sign.png');
         this.load.image('arrowdown', 'arrowdown.png');
         this.load.image('arrowslant', 'arrowslant.png');
+        this.load.image('fly', 'firefly.png');
     }
 
     onEnter() {
+
+        this.flyob = this.add.image(
+            100,//x
+            400,//y
+            'fly',//imagename
+            )
+            this.flyob.setDepth(1)
+            this.flyob.setScale(.5) //resize
+        .setInteractive()
+        .on('pointerover', () => {
+            this.showMessage('*bzzzzzzzzzzzzzzz*');
+            this.flyob.setDepth(1)
+            this.tweens.add({
+                targets: this.flyob,
+                x: this.s + (this.h - 2 * this.s) * Math.random(),
+                y: this.s + (this.h - 2 * this.s) * Math.random(),
+                ease: 'Sine.inOut',
+                duration: 500
+            });
+        })
+        .on('pointerdown', () => this.gotoScene('outro'));
+
+
         this.signob = this.add.image(
             800,//x
             820,//y
@@ -252,6 +276,7 @@ class Demo2 extends AdventureScene {
                     forestb.setDepth(0);
                     this.arrowd.background = this.back;
                     this.arrows.background = this.back;
+                    this.flyob.background = this.back;
 
         // this.add.text(this.w * 0.3, this.w * 0.4, "just go back")
         //     .setFontSize(this.s * 2)
@@ -265,19 +290,19 @@ class Demo2 extends AdventureScene {
 
 
         //make firefly
-        let finish = this.add.text(this.w * 0.6, this.w * 0.2, '(finish the game)')
-            .setInteractive()
-            .on('pointerover', () => {
-                this.showMessage('*giggles*');
-                this.tweens.add({
-                    targets: finish,
-                    x: this.s + (this.h - 2 * this.s) * Math.random(),
-                    y: this.s + (this.h - 2 * this.s) * Math.random(),
-                    ease: 'Sine.inOut',
-                    duration: 500
-                });
-            })
-            .on('pointerdown', () => this.gotoScene('outro'));
+        // let finish = this.add.text(this.w * 0.6, this.w * 0.2, '(finish the game)')
+        //     .setInteractive()
+        //     .on('pointerover', () => {
+        //         this.showMessage('*giggles*');
+        //         this.tweens.add({
+        //             targets: finish,
+        //             x: this.s + (this.h - 2 * this.s) * Math.random(),
+        //             y: this.s + (this.h - 2 * this.s) * Math.random(),
+        //             ease: 'Sine.inOut',
+        //             duration: 500
+        //         });
+        //     })
+        //     .on('pointerdown', () => this.gotoScene('outro'));
 
             // const forest = this.add.image(0, 0, 'forestback');
             // forest.setOrigin(0);
@@ -300,20 +325,7 @@ class Scene3 extends AdventureScene {
         this.load.image('arrowdown', 'arrowdown.png');
     }
     onEnter() {
-        let finish = this.add.text(this.w * 0.6, this.w * 0.2, '(finish the game)')
-        .setInteractive()
-        .on('pointerover', () => {
-            this.showMessage('*giggles*');
-            this.finish.setDepth(1)
-            this.tweens.add({
-                targets: finish,
-                x: this.s + (this.h - 2 * this.s) * Math.random(),
-                y: this.s + (this.h - 2 * this.s) * Math.random(),
-                ease: 'Sine.inOut',
-                duration: 500
-            });
-        })
-        .on('pointerdown', () => this.gotoScene('outro'));
+        //let finish = this.add.text(this.w * 0.6, this.w * 0.2, '(finish the game)'
 
         this.arrowdo = this.add.image(
             100,//x
