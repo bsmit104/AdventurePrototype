@@ -18,9 +18,9 @@ Experience requirements:
 - Meadow (butterfly, cam, arrow, poppy), Forest (sign, arrow 1 and 2, firefly, cam), Pond (frog, duck, cam), Deeper Forest (cam, deerman, deer), Cemetary (tomb stones, stick, stump)  
 **Many objects have `pointerover` messages**:  
 - Meadow (butterfly, cam, arrow, poppy), Forest (sign, arrow 1 and 2, firefly, cam), Pond (frog, duck, cam), Deeper Forest (cam, deerman, deer), Cemetary (tomb stones, stick, stump)  
-- **Many objects have `pointerdown` effects**:  
+**Many objects have `pointerdown` effects**:  
 - Meadow (butterfly, cam, arrow, poppy), Forest (sign, arrow 1 and 2, firefly, cam), Pond (frog, duck, cam), Deeper Forest (cam, deerman, deer), Cemetary (tomb stones, stick, stump)
-- **Some objects are themselves animated**: 
+**Some objects are themselves animated**: 
 Cam shakes, bugs move around, deerman shakes, some other objects shake
 
 Asset sources:
