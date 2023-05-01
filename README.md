@@ -1,5 +1,8 @@
 A simple adventure game by {who?} based on a simple adventure game engine by [Adam Smith](https://github.com/rndmcnlly).
 
+Prototype:
+https://docs.google.com/presentation/d/1VwAZxVT8S_dUNjfUNdJnE6aIXMxJkKOLxrJSvMAriyw/edit?usp=sharing 
+
 Code requirements:  
 **4+ scenes based on `AdventureScene`**:  
 - Scene1, Scene2, Scene3, Scene4, Scene9, Scene5, Scene6  
