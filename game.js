@@ -1301,8 +1301,8 @@ class Intro extends Phaser.Scene {
         this.load.path = "./assets/";
         this.load.audio('logosound', 'logosound.wav');
         this.load.spritesheet('logonah', 'logonah.png', {
-            frameWidth: 600,
-            frameHeight: 600
+            frameWidth: 100,
+            frameHeight: 100
         });
     }
     create() {
@@ -1315,7 +1315,7 @@ class Intro extends Phaser.Scene {
             500,//y
             'logonah',//imagename
         );
-        this.imageObject2.setScale(2.3); //resize
+        this.imageObject2.setScale(6); //resize
         this.anims.create({
             key: 'logonah',
             frames: this.anims.generateFrameNumbers('logonah', {
