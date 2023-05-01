@@ -618,7 +618,6 @@ class Scene9 extends AdventureScene {
                     this.loseItem("Butterfly");
                     this.showMessage("Sorry Butter.\n*The frog thoroughly enjoys devouring Butter.");
                     //door.setText("🚪 unlocked door");
-                    this.gotoScene('scene6');
                 }
                 else {
                     this.showMessage("I don't have a butterfly.");
