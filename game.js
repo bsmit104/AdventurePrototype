@@ -1300,7 +1300,7 @@ class Intro extends Phaser.Scene {
     preload(){
         this.load.path = "./assets/";
         this.load.audio('logosound', 'logosound.wav');
-        this.load.spritesheet('logosmall', 'logosmall.png', {
+        this.load.spritesheet('logonah', 'logonah.png', {
             frameWidth: 600,
             frameHeight: 600
         });
@@ -1313,19 +1313,19 @@ class Intro extends Phaser.Scene {
         this.imageObject2 = this.add.sprite(
             900,//x
             500,//y
-            'logosmall',//imagename
+            'logonah',//imagename
         );
         this.imageObject2.setScale(2.3); //resize
         this.anims.create({
-            key: 'logosmall',
-            frames: this.anims.generateFrameNumbers('logosmall', {
+            key: 'logonah',
+            frames: this.anims.generateFrameNumbers('logonah', {
                 start: 0,
                 end: 16
             }),
             frameRate: 10,
             repeat: 0
         });
-        this.imageObject2.anims.play('logosmall', true);
+        this.imageObject2.anims.play('logonah', true);
         this.time.delayedCall(2000, () => {
             this.tweens.add({
                 targets: this.imageObject2,
