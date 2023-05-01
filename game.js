@@ -679,7 +679,7 @@ class Scene9 extends AdventureScene {
             this.cam.setScale(2) //resize
             .setInteractive()
             .on('pointerover', () => {
-                this.showMessage("We used to catch frogs before you passed. I wonder if there are frogs where you are.");
+                this.showMessage("We used to catch frogs before you passed. I wonder if there are frogs where you are now.");
             })
             .on('pointerdown', () => {
                     //this.loseItem("Poppy");
