@@ -1,6 +1,6 @@
-class Demo1 extends AdventureScene {
+class Scene1 extends AdventureScene {
     constructor() {
-        super("demo1", "The Meadow");
+        super("scene1", "The Meadow");
     }
     preload() {
         this.load.path = "./assets/";
@@ -133,7 +133,7 @@ class Demo1 extends AdventureScene {
                     //this.loseItem("Poppy");
                     this.showMessage("*la la la*");
                     //door.setText("🚪 unlocked door");
-                    this.gotoScene('demo2');
+                    this.gotoScene('scene2');
                 }
             })
 
@@ -167,9 +167,9 @@ class Demo1 extends AdventureScene {
     }
 }
 
-class Demo2 extends AdventureScene {
+class Scene2 extends AdventureScene {
     constructor() {
-        super("demo2", "The Woods.");
+        super("scene2", "The Woods.");
     }
     preload() {
         this.load.path = "./assets/";
@@ -461,7 +461,7 @@ class Scene3 extends AdventureScene {
             })
             .on('pointerdown', () => {
                 console.log("Clicked on the arrow to go back.");
-                this.gotoScene('demo2');
+                this.gotoScene('scene2');
             });
             ////////////////////////fix me////////////////////////////
             //.on('pointerdown', () => this.gotoScene('demo2'));
@@ -706,7 +706,7 @@ class Scene9 extends AdventureScene {
             })
             .on('pointerdown', () => {
                 console.log("Clicked on the arrow to go back.");
-                this.gotoScene('demo2');
+                this.gotoScene('scene2');
             });
 
 
@@ -750,7 +750,7 @@ class Scene4 extends AdventureScene {
             })
             .on('pointerdown', () => {
                 console.log("Clicked on the arrow to go back.");
-                this.gotoScene('demo2');
+                this.gotoScene('scene2');
             });
 
 
@@ -789,9 +789,9 @@ class Scene4 extends AdventureScene {
             //let cam = this.add.image("cam")
             //.setFontSize(this.s * 2)
             .setInteractive()
-            .on('pointerover', () => this.showMessage("A monster.")) 
+            .on('pointerover', () => this.showMessagered("A monster.")) 
             .on('pointerdown', () => {
-                this.showMessage("He is full of animosity.\nA: to attack\nG: to give flower");
+                this.showMessagered("He is full of animosity.\nA: to attack\nG: to give flower");
                 this.tweens.add({
                     targets: this.deermanob,
                     x: '+=' + this.s,
@@ -804,7 +804,7 @@ class Scene4 extends AdventureScene {
             this.input.keyboard.on('keydown-A', () => {
                 if (this.hasItem("Stick")) {
                     this.loseItem("Stick");
-                    this.showMessage("Die vermin!");
+                    this.showMessagered("Die vermin!");
                     //door.setText("🚪 unlocked door");
                     this.gotoScene('scene5');
                 }
@@ -1136,7 +1136,7 @@ class Title extends Phaser.Scene {
             playText.setStyle({ fill: '#fff' });
         });
         playText.on('pointerdown', () => {
-            this.scene.start('demo1');
+            this.scene.start('scene1');
         });
 
         // this.input.on('pointerdown', () => {
@@ -1186,8 +1186,20 @@ class Outro extends Phaser.Scene {
     constructor() {
         super('outro');
     }
+    preload() {
+        this.load.image('poppy', 'poppy.png');
+    }
     create() {
-        this.add.text(100, 50, "Credit:\nArt, story, game.js - Brayden Smith\nadventure.js - Adam Smith").setFontSize(50);
+        this.pop = this.add.image(
+            1000,//x
+            900,//y
+            'poppy',//imagename
+            )
+            //this.title.setDepth(1)
+            this.pop.setScale(4) //resize
+
+        this.cameras.main.setBackgroundColor('0x1f2c39');
+        this.add.text(100, 50, "Thanks for playing\nCredit:\nArt, story, game.js - Brayden Smith\nadventure.js - Adam Smith").setFontSize(50);
         this.add.text(100, 900, "Click anywhere to restart.").setFontSize(20);
         this.input.on('pointerdown', () => this.scene.start('intro'));
     }
@@ -1201,7 +1213,7 @@ const game = new Phaser.Game({
         width: 1920,
         height: 1080
     },
-    scene: [S0, Intro, Title, Demo1, Demo2, Scene3, Scene4, Scene9, Scene5, Scene6, Outro],
+    scene: [S0, Intro, Title, Scene1, Scene2, Scene3, Scene4, Scene9, Scene5, Scene6, Outro],
     title: "Adventure Game",
 });
 
