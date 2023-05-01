@@ -79,6 +79,16 @@ class AdventureScene extends Phaser.Scene {
     //         }
     //     });
     // }
+    showMessagered(message) {
+        this.messageBox.setText(message);
+        this.messageBox.setTint(0xff0000); // set the tint to red
+        this.tweens.add({
+            targets: this.messageBox,
+            alpha: { from: 1, to: 0 },
+            easing: 'Quintic.in',
+            duration: 4 * this.transitionDuration
+        });
+    }
 
     showMessagelong(message) {
         this.messageBox.setText(message);
@@ -171,6 +181,31 @@ class AdventureScene extends Phaser.Scene {
             this.scene.start(key, { inventory: this.inventory });
         });
     }
+
+    // gotoScenePan(key) {
+    //     // Pan the camera while shaking and fading out the old scene
+    //     this.cameras.main.pan(this.cameras.main.centerX + 1000, this.transitionDuration, 'Linear');
+    //     this.cameras.main.shake(this.transitionDuration / 2, 0.02);
+      
+    //     // Start the new scene and pan in while shaking the camera
+    //     this.time.delayedCall(this.transitionDuration, () => {
+    //       this.scene.start(key, { inventory: this.inventory });
+    //       this.cameras.main.pan(this.cameras.main.centerX, this.transitionDuration, 'Linear');
+    //       this.cameras.main.shake(this.transitionDuration / 2, 0.02);
+    //       this.cameras.main.resetFX();
+    //     });
+        // this.cameras.main.fade(this.transitionDuration, 0, 0, 0);
+        // this.time.delayedCall(this.transitionDuration, () => {
+        //     this.scene.start(key, { inventory: this.inventory });
+        // });
+        // this.cameras.main.fadeOut(this.transitionDuration, 0, 0, 0, (camera, progress) => {
+        //     camera.scrollX = progress * this.cameras.main.width;
+        // });
+        
+        // this.time.delayedCall(this.transitionDuration, () => {
+        //     this.scene.start(key, { inventory: this.inventory });
+        // });
+    //}
 
     onEnter() {
         console.warn('This AdventureScene did not implement onEnter():', this.constructor.name);
