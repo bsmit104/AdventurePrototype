@@ -894,7 +894,7 @@ class Scene5 extends AdventureScene {
             ///////////////////// Leave flower?////////////////////////////////
             .on('pointerdown', () => {
                 // or you humans are all alike
-                this.showMessagelong("The note reads: Forgive me stranger, I thought you were the hunter that killed my flower. I was forced into self defense, but you still do not deserve to die. Neither did my wife.\nI am so sorry.");
+                this.showMessagelong("The note reads: Forgive me stranger, I thought you were the hunter that killed my flower. I was forced into self defense, but you still did not deserve death. Neither did my wife.\nI am so sorry.");
             });
 
             this.add.text(300, 1000, "finish the game", {fontSize: '40px'})
