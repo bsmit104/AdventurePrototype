@@ -60,7 +60,7 @@ class Demo1 extends AdventureScene {
             .on('pointerdown', () => {
                 this.showMessage("Cut it out!");
                 this.tweens.add({
-                    targets: cam,
+                    targets: this.cam,
                     x: '+=' + this.s,
                     repeat: 2,
                     yoyo: true,
@@ -186,7 +186,7 @@ class Demo2 extends AdventureScene {
     onEnter() {
 
         this.flyob = this.add.image(
-            100,//x
+            800,//x
             400,//y
             'fly',//imagename
             )
@@ -570,8 +570,106 @@ class Scene9 extends AdventureScene {
         this.load.path = "./assets/";
         this.load.image('cam', 'cam.png');
         this.load.image('pond', 'pond.png');
+        this.load.image('ducky', 'ducky.png');
+        this.load.image('frog', 'frog.png');
+        // this.load.spritesheet('frog', 'frog.png', {
+        //     frameWidth: 30,
+        //     frameHeight: 30
+        // });
     }
     onEnter() {
+        this.frog = this.add.image(
+            900,//x
+            900,//y
+            'frog',//imagename
+            )
+            this.frog.setDepth(1)
+            this.frog.setScale(1) //resize
+            .setInteractive()
+            .on('pointerover', () => {
+                this.showMessage("riiiiiibbit.\nF: to feed frog firefly\nB: to feed frog butterfly.");
+            })
+            .on('pointerdown', () => {
+                    //this.loseItem("Poppy");
+                    this.showMessage("*dramatically*\nriiiiiiiiiiiiiiii\niiiiiiiiiibbbbbbiiiiii\niiiitttttttt");
+                    //door.setText("🚪 unlocked door");
+            })
+            this.input.keyboard.on('keydown-F', () => {
+                if (this.hasItem("Firefly")) {
+                    this.loseItem("Firefly");
+                    this.showMessage("*he gobbles it up*\nGood froggy!");
+                    //door.setText("🚪 unlocked door");
+                }
+                else {
+                    this.showMessage("I don't have a firefly.");
+                    this.tweens.add({
+                        targets: this.frog,
+                        x: '+=' + this.s,
+                        repeat: 2,
+                        yoyo: true,
+                        ease: 'Sine.inOut',
+                        duration: 100
+                    });
+                    //rock throwing animation?
+                }
+            })
+            this.input.keyboard.on('keydown-B', () => {
+                if (this.hasItem("Butterfly")) {
+                    this.loseItem("Butterfly");
+                    this.showMessage("Sorry Butter.\n*The frog thoroughly enjoys devouring Butter.");
+                    //door.setText("🚪 unlocked door");
+                    this.gotoScene('scene6');
+                }
+                else {
+                    this.showMessage("I don't have a butterfly.");
+                    this.tweens.add({
+                        targets: this.frog,
+                        x: '+=' + this.s,
+                        repeat: 2,
+                        yoyo: true,
+                        ease: 'Sine.inOut',
+                        duration: 100
+                    });
+                }
+            })
+        // this.imageObject2 = this.add.sprite(
+        //     1000,//x
+        //     900,//y
+        //     'frog',//imagename
+        // );
+        // //console.log(this.imageObject2);
+        // this.imageObject2.setScale(1); //resize
+        // //this.imageObject2.setDepth(1);
+        // this.anims.create({
+        //     key: 'frog',
+        //     frames: this.anims.generateFrameNumbers('frog', {
+        //         start: 0,
+        //         end: 18
+        //     }),
+        //     frameRate: 10,
+        //     repeat: 0
+        // });
+        // this.imageObject2.anims.play('frog', true);
+
+
+        this.duckob = this.add.image(
+            500,//x
+            1000,//y
+            'ducky',//imagename
+            )
+            this.duckob.setDepth(1)
+            this.duckob.setScale(1) //resize
+            .setInteractive()
+            .on('pointerover', () => {
+                this.showMessage("Quack.");
+            })
+            .on('pointerdown', () => {
+                    //this.loseItem("Poppy");
+                    this.showMessage("Honk, honk.");
+                    //door.setText("🚪 unlocked door");
+            })
+
+
         this.cam = this.add.image(
             300,//x
             800,//y
@@ -581,7 +679,7 @@ class Scene9 extends AdventureScene {
             this.cam.setScale(2) //resize
             .setInteractive()
             .on('pointerover', () => {
-                this.showMessage("I hear frogs.");
+                this.showMessage("We used to catch frogs before you passed. I wonder if there are frogs where you are.");
             })
             .on('pointerdown', () => {
                     //this.loseItem("Poppy");
@@ -617,6 +715,7 @@ class Scene9 extends AdventureScene {
         pondo.setDepth(0);
         this.cam.background = this.back;
         this.arrowdo.background = this.back;
+        this.frog.background = this.back;
     }
 }
 
@@ -666,9 +765,9 @@ class Scene4 extends AdventureScene {
             //let cam = this.add.image("cam")
             //.setFontSize(this.s * 2)
             .setInteractive()
-            .on('pointerover', () => this.showMessage("I feel like there is a mouse on me."))
+            .on('pointerover', () => this.showMessage("I am scared."))
             .on('pointerdown', () => {
-                this.showMessage("Agh!");
+                this.showMessage("*heart beat*");
                 this.tweens.add({
                     targets: this.cam,
                     x: '+=' + this.s,
@@ -766,28 +865,28 @@ class Scene5 extends AdventureScene {
     }
     onEnter() {
         this.graveob1 = this.add.image(
-            500,//x
+            450,//x
             700,//y
             'grave1',//imagename
             )
             this.graveob1.setDepth(1)
-            this.graveob1.setScale(1) //resize
+            this.graveob1.setScale(1.3) //resize
 
             .setInteractive()
             .on('pointerover', () => this.showMessage("A tombstone."))
             //.on('keydown-L', () => { 
             ///////////////////// Leave flower?////////////////////////////////
             .on('pointerdown', () => {
-                this.showMessage("It reads: My love, My flower, my deer, Rest");
+                this.showMessage("It reads: My love, My flower, my deer, Rest. I will miss you every day.");
             });
 
         this.graveob2 = this.add.image(
-            700,//x
+            750,//x
             700,//y
             'grave2',//imagename
             )
             this.graveob2.setDepth(1)
-            this.graveob2.setScale(1) //resize
+            this.graveob2.setScale(1.3) //resize
 
             .setInteractive()
             .on('pointerover', () => this.showMessage("A tombstone with a note."))
@@ -795,7 +894,7 @@ class Scene5 extends AdventureScene {
             ///////////////////// Leave flower?////////////////////////////////
             .on('pointerdown', () => {
                 // or you humans are all alike
-                this.showMessagelong("The note reads: Forgive me stranger, I thought you were the hunter that killed my wife. You humans are all alike. I was forced into self defense, but you still do not deserve to die. Neither did my wife. I am so sorry.");
+                this.showMessagelong("The note reads: Forgive me stranger, I thought you were the hunter that killed my flower. I was forced into self defense, but you still do not deserve to die. Neither did my wife.\nI am so sorry.");
             });
 
             this.add.text(300, 1000, "finish the game", {fontSize: '40px'})
@@ -839,7 +938,7 @@ class Scene6 extends AdventureScene {
             //let cam = this.add.image("cam")
             //.setFontSize(this.s * 2)
             .setInteractive()
-            .on('pointerover', () => this.showMessagelong("Thank you. I am sorry you saw that. I am ashamed to face you for I judged you so harshly and you only brought comfort. I just lost someone dear to me. This makes me feel closer to her again."))
+            .on('pointerover', () => this.showMessagelong("Thank you. I am sorry you saw that. I am ashamed to face you for I judged you so harshly and you only brought comfort. I just lost someone dear to me. This flower makes me feel closer to her again."))
             .on('pointerdown', () => {
                 this.showMessage("I miss her.");
                 // this.tweens.add({
@@ -962,7 +1061,7 @@ class Intro extends Phaser.Scene {
                 }
             });
         }, null, this);
-        this.input.on('pointerdown', () => this.scene.start('demo1'));
+        this.input.on('pointerdown', () => this.scene.start('title'));
     }
     // constructor() {
     //     super('intro')
@@ -975,6 +1074,76 @@ class Intro extends Phaser.Scene {
     //         this.time.delayedCall(1000, () => this.scene.start('demo1'));
     //     });
     // }
+}
+
+class Title extends Phaser.Scene {
+    constructor() {
+        super('title')
+    }
+    preload() {
+        this.load.path = "./assets/";
+        this.load.image('title', 'flowertitle.png');
+        this.load.image('poppy', 'poppy.png');
+        this.load.spritesheet('cammy', 'cammerz.png', {
+            frameWidth: 128,
+            frameHeight: 128
+        });
+    }
+    create() {
+        this.cameras.main.setBackgroundColor('0x1f2c39');
+
+        this.imageObject = this.add.sprite(
+            1500,//x
+            700,//y
+            'cammy',//imagename
+        );
+        this.imageObject.setScale(5); //resize
+        this.anims.create({
+            key: 'cammy',
+            frames: this.anims.generateFrameNumbers('cammy', {
+                start: 0,
+                end: 22
+            }),
+            frameRate: 10,
+            repeat: -1
+        });
+        this.imageObject.anims.play('cammy', true);
+
+        this.pop = this.add.image(
+            800,//x
+            900,//y
+            'poppy',//imagename
+            )
+            //this.title.setDepth(1)
+            this.pop.setScale(4) //resize
+
+        //this.image.add()
+        this.titleob = this.add.image(
+            920,//x
+            250,//y
+            'title',//imagename
+            )
+            //this.title.setDepth(1)
+            this.titleob.setScale(4) //resize
+        //this.add.text(50,50, "Adventure awaits!").setFontSize(50);
+        //this.add.text(50,100, "Click anywhere to begin.").setFontSize(20);
+        const playText = this.add.text(300, 600, 'PLAY', { fontSize: '100px', fill: '#fff' });
+        playText.setInteractive();
+        playText.on('pointerover', () => {
+            playText.setStyle({ fill: '#ff0' });
+        });
+        playText.on('pointerout', () => {
+            playText.setStyle({ fill: '#fff' });
+        });
+        playText.on('pointerdown', () => {
+            this.scene.start('demo1');
+        });
+
+        // this.input.on('pointerdown', () => {
+        //     this.cameras.main.fade(1000, 0,0,0);
+        //     this.time.delayedCall(1000, () => this.scene.start('demo1'));
+        // });
+    }
 }
 
 class S0 extends Phaser.Scene {
@@ -1018,8 +1187,8 @@ class Outro extends Phaser.Scene {
         super('outro');
     }
     create() {
-        this.add.text(50, 50, "That's all!").setFontSize(50);
-        this.add.text(50, 100, "Click anywhere to restart.").setFontSize(20);
+        this.add.text(100, 50, "Credit:\nArt, story, game.js - Brayden Smith\nadventure.js - Adam Smith").setFontSize(50);
+        this.add.text(100, 900, "Click anywhere to restart.").setFontSize(20);
         this.input.on('pointerdown', () => this.scene.start('intro'));
     }
 }
@@ -1032,7 +1201,7 @@ const game = new Phaser.Game({
         width: 1920,
         height: 1080
     },
-    scene: [S0, Intro, Demo1, Demo2, Scene3, Scene4, Scene9, Scene5, Scene6, Outro],
+    scene: [S0, Intro, Title, Demo1, Demo2, Scene3, Scene4, Scene9, Scene5, Scene6, Outro],
     title: "Adventure Game",
 });
 
