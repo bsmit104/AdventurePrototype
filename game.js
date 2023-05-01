@@ -93,6 +93,23 @@ class Scene1 extends AdventureScene {
                     onComplete: () => this.poppy.destroy()
                 });
             })
+            const fxadow = this.poppy.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
+        this.add.tween({
+            targets: this.poppy,
+            //scale: 1.05,
+            scale: 1.2,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        });
+        this.add.tween({
+            targets: fxadow,
+            x: 5,
+            y: -5,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        })
 
 
         // let key = this.add.text(this.w * 0.5, this.w * 0.1, "🔑 key")
@@ -136,6 +153,23 @@ class Scene1 extends AdventureScene {
                     this.gotoScene('scene2');
                 }
             })
+            const fxhadow = this.arrow.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
+        this.add.tween({
+            targets: this.arrow,
+            //scale: 1.05,
+            scale: .55,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        });
+        this.add.tween({
+            targets: fxhadow,
+            x: 5,
+            y: -5,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        })
 
             const myBackground = this.add.image(0, 0, 'back');
             myBackground.setOrigin(0);
@@ -193,6 +227,23 @@ class Scene2 extends AdventureScene {
             this.flyob.setDepth(1)
             this.flyob.setScale(.5) //resize
         .setInteractive()
+        // const fxhadow = this.flyob.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
+        // this.add.tween({
+        //     targets: this.flyob,
+        //     //scale: 1.05,
+        //     scale: .55,
+        //     duration: 800,
+        //     yoyo: true,
+        //     repeat: -1
+        // });
+        // this.add.tween({
+        //     targets: fxhadow,
+        //     x: 5,
+        //     y: -5,
+        //     duration: 800,
+        //     yoyo: true,
+        //     repeat: -1
+        // })
         .on('pointerover', () => {
             this.showMessage('*bzzzzzzzzzzzzzzz*');
             this.flyob.setDepth(1)
@@ -251,6 +302,7 @@ class Scene2 extends AdventureScene {
             //let cam = this.add.image("cam")
             //.setFontSize(this.s * 2)
             .setInteractive()
+            //const fxShadow = this.signob.preFX.addShadow(0, 0, 0.006, 2, 0x333333, 10);
             .on('pointerover', () => this.showMessage("A sign."))
             .on('pointerdown', () => {
                 this.showMessage("One can go right, or one can go left!");
@@ -263,6 +315,24 @@ class Scene2 extends AdventureScene {
                 //     duration: 100
                 // });
             });
+            const fxShadow = this.signob.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
+
+        this.add.tween({
+            targets: this.signob,
+            //scale: 1.05,
+            scale: .32,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        });
+        this.add.tween({
+            targets: fxShadow,
+            x: 5,
+            y: -5,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        })
 
         this.cam = this.add.image(
             400,//x
@@ -313,6 +383,23 @@ class Scene2 extends AdventureScene {
                         this.gotoScene('scene4');
                     //}
                 })
+                const fxShdow = this.arrowd.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
+        this.add.tween({
+            targets: this.arrowd,
+            //scale: 1.05,
+            scale: .7,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        });
+        this.add.tween({
+            targets: fxShdow,
+            x: 5,
+            y: -5,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        })
 
                 this.arrows = this.add.image(
                     1200,//x
@@ -339,6 +426,24 @@ class Scene2 extends AdventureScene {
                             this.gotoScene('scene3');
                         //}
                     })
+                    const fxShow = this.arrows.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
+        this.add.tween({
+            targets: this.arrows,
+            //scale: 1.05,
+            scale: .7,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        });
+        this.add.tween({
+            targets: fxShow,
+            x: 5,
+            y: -5,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        })
+
                     const forestb = this.add.image(0, 0, 'forest');
                     forestb.setOrigin(0);
                     forestb.setDepth(0);
@@ -414,6 +519,23 @@ class Scene3 extends AdventureScene {
                     //door.setText("🚪 unlocked door");
                     this.gotoScene('scene9');
             })
+            const fxShw = this.arrow.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
+        this.add.tween({
+            targets: this.arrow,
+            //scale: 1.05,
+            scale: .6,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        });
+        this.add.tween({
+            targets: fxShw,
+            x: 5,
+            y: -5,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        })
 
         this.stickob = this.add.image(
             600,//x
@@ -437,6 +559,23 @@ class Scene3 extends AdventureScene {
                 duration: 500,
                 onComplete: () => this.stickob.destroy()
             });
+        })
+        const fShow = this.stickob.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
+        this.add.tween({
+            targets: this.stickob,
+            //scale: 1.05,
+            scale: 1.1,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        });
+        this.add.tween({
+            targets: fShow,
+            x: 5,
+            y: -5,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
         })
 
 
@@ -463,6 +602,23 @@ class Scene3 extends AdventureScene {
                 console.log("Clicked on the arrow to go back.");
                 this.gotoScene('scene2');
             });
+            const fSow = this.arrowdo.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
+        this.add.tween({
+            targets: this.arrowdo,
+            //scale: 1.05,
+            scale: .6,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        });
+        this.add.tween({
+            targets: fSow,
+            x: 5,
+            y: -5,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        })
             ////////////////////////fix me////////////////////////////
             //.on('pointerdown', () => this.gotoScene('demo2'));
 
@@ -514,15 +670,32 @@ class Scene3 extends AdventureScene {
             .on('pointerover', () => this.showMessage("Something must have been angry."))
             .on('pointerdown', () => {
                 this.showMessage("If I was only a dryad, then I would fix it.");
-                this.tweens.add({
-                    targets: this.stumpob,
-                    x: '+=' + this.s,
-                    repeat: 2,
-                    yoyo: true,
-                    ease: 'Sine.inOut',
-                    duration: 100
-                });
+                // this.tweens.add({
+                //     targets: this.stumpob,
+                //     x: '+=' + this.s,
+                //     repeat: 2,
+                //     yoyo: true,
+                //     ease: 'Sine.inOut',
+                //     duration: 100
+                // });
             });
+            const how = this.stumpob.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
+        this.add.tween({
+            targets: this.stumpob,
+            //scale: 1.05,
+            scale: .42,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        });
+        this.add.tween({
+            targets: how,
+            x: 5,
+            y: -5,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        })
 
 
         this.graveob = this.add.image(
@@ -550,6 +723,23 @@ class Scene3 extends AdventureScene {
                 //     duration: 100
                 // });
             });
+            const fSh = this.graveob.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
+        this.add.tween({
+            targets: this.graveob,
+            //scale: 1.05,
+            scale: 1.07,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        });
+        this.add.tween({
+            targets: fSh,
+            x: 5,
+            y: -5,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        })
 
         const forestl = this.add.image(0, 0, 'lefto');
         forestl.setOrigin(0);
@@ -631,6 +821,23 @@ class Scene9 extends AdventureScene {
                     });
                 }
             })
+            const ow = this.frog.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
+        this.add.tween({
+            targets: this.frog,
+            //scale: 1.05,
+            scale: 1.1,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        });
+        this.add.tween({
+            targets: ow,
+            x: 5,
+            y: -5,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        })
         // this.imageObject2 = this.add.sprite(
         //     1000,//x
         //     900,//y
@@ -667,6 +874,23 @@ class Scene9 extends AdventureScene {
                     this.showMessage("Honk, honk.");
                     //door.setText("🚪 unlocked door");
             })
+            const w = this.duckob.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
+        this.add.tween({
+            targets: this.duckob,
+            //scale: 1.05,
+            scale: 1.1,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        });
+        this.add.tween({
+            targets: w,
+            x: 5,
+            y: -5,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        })
 
 
         this.cam = this.add.image(
@@ -707,6 +931,23 @@ class Scene9 extends AdventureScene {
                 console.log("Clicked on the arrow to go back.");
                 this.gotoScene('scene2');
             });
+            const o = this.arrowdo.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
+        this.add.tween({
+            targets: this.arrowdo,
+            //scale: 1.05,
+            scale: .55,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        });
+        this.add.tween({
+            targets: o,
+            x: 5,
+            y: -5,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        })
 
 
         const pondo = this.add.image(0, 0, 'pond');
@@ -839,6 +1080,23 @@ class Scene4 extends AdventureScene {
                     });
                 }
             })
+            const dob = this.deermanob.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
+        this.add.tween({
+            targets: this.deermanob,
+            //scale: 1.05,
+            scale: 4.1,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        });
+        this.add.tween({
+            targets: dob,
+            x: 5,
+            y: -5,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        })
 
         const forest2 = this.add.image(0, 0, 'righto');
         forest2.setOrigin(0);
@@ -878,6 +1136,23 @@ class Scene5 extends AdventureScene {
             .on('pointerdown', () => {
                 this.showMessage("It reads: My love, My flower, my deer, Rest. I will miss you every day.");
             });
+            const newwrd = this.graveob1.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
+        this.add.tween({
+            targets: this.graveob1,
+            //scale: 1.05,
+            scale: 1.35,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        });
+        this.add.tween({
+            targets: newwrd,
+            x: 5,
+            y: -5,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        })
 
         this.graveob2 = this.add.image(
             750,//x
@@ -895,6 +1170,23 @@ class Scene5 extends AdventureScene {
                 // or you humans are all alike
                 this.showMessagelong("The note reads: Forgive me stranger, I thought you were the hunter that killed my flower. I was forced into self defense, but you still did not deserve death. Neither did my wife.\nI am so sorry.");
             });
+            const newwod = this.graveob2.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
+        this.add.tween({
+            targets: this.graveob2,
+            //scale: 1.05,
+            scale: 1.35,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        });
+        this.add.tween({
+            targets: newwod,
+            x: 5,
+            y: -5,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        })
 
             this.add.text(300, 1000, "finish the game", {fontSize: '40px'})
             //let finish = this.add.text(this.w * 0.6, this.w * 0.2, '(finish the game)')
@@ -1009,8 +1301,8 @@ class Intro extends Phaser.Scene {
         this.load.path = "./assets/";
         this.load.audio('logosound', 'logosound.wav');
         this.load.spritesheet('logosmall', 'logosmall.png', {
-            frameWidth: 100,
-            frameHeight: 100
+            frameWidth: 600,
+            frameHeight: 600
         });
     }
     create() {
@@ -1023,7 +1315,7 @@ class Intro extends Phaser.Scene {
             500,//y
             'logosmall',//imagename
         );
-        this.imageObject2.setScale(10); //resize
+        this.imageObject2.setScale(2.3); //resize
         this.anims.create({
             key: 'logosmall',
             frames: this.anims.generateFrameNumbers('logosmall', {
