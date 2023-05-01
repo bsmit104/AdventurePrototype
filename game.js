@@ -254,14 +254,14 @@ class Scene2 extends AdventureScene {
             .on('pointerover', () => this.showMessage("A sign."))
             .on('pointerdown', () => {
                 this.showMessage("One can go right, or one can go left!");
-                this.tweens.add({
-                    targets: this.signob,
-                    x: '+=' + this.s,
-                    repeat: 2,
-                    yoyo: true,
-                    ease: 'Sine.inOut',
-                    duration: 100
-                });
+                // this.tweens.add({
+                //     targets: this.signob,
+                //     x: '+=' + this.s,
+                //     repeat: 2,
+                //     yoyo: true,
+                //     ease: 'Sine.inOut',
+                //     duration: 100
+                // });
             });
 
         this.cam = this.add.image(
