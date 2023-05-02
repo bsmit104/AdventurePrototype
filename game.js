@@ -93,23 +93,23 @@ class Scene1 extends AdventureScene {
                     onComplete: () => this.poppy.destroy()
                 });
             })
-        //     const fxadow = this.poppy.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
-        // this.add.tween({
-        //     targets: this.poppy,
-        //     //scale: 1.05,
-        //     scale: 1.2,
-        //     duration: 800,
-        //     yoyo: true,
-        //     repeat: -1
-        // });
-        // this.add.tween({
-        //     targets: fxadow,
-        //     x: 5,
-        //     y: -5,
-        //     duration: 800,
-        //     yoyo: true,
-        //     repeat: -1
-        // })
+            const fxadow = this.poppy.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
+        this.add.tween({
+            targets: this.poppy,
+            //scale: 1.05,
+            scale: 1.2,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        });
+        this.add.tween({
+            targets: fxadow,
+            x: 5,
+            y: -5,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        })
 
 
         // let key = this.add.text(this.w * 0.5, this.w * 0.1, "🔑 key")
