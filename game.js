@@ -806,7 +806,7 @@ class Scene9 extends AdventureScene {
             this.input.keyboard.on('keydown-B', () => {
                 if (this.hasItem("Butterfly")) {
                     this.loseItem("Butterfly");
-                    this.showMessage("Sorry Butter.\n*The frog thoroughly enjoys devouring Butter.");
+                    this.showMessage("Sorry Butter.\n*The frog thoroughly enjoys devouring Butter.*");
                     //door.setText("🚪 unlocked door");
                 }
                 else {
