@@ -878,7 +878,7 @@ class Scene9 extends AdventureScene {
         this.add.tween({
             targets: this.duckob,
             //scale: 1.05,
-            scale: 1.1,
+            scale: 1.05,
             duration: 800,
             yoyo: true,
             repeat: -1
@@ -1241,6 +1241,23 @@ class Scene6 extends AdventureScene {
                 //     duration: 100
                 // });
             });
+            const cheese = this.deerob.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
+        this.add.tween({
+            targets: this.deerob,
+            //scale: 1.05,
+            scale: .41,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        });
+        this.add.tween({
+            targets: cheese,
+            x: 5,
+            y: -5,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        })
 
         this.cam = this.add.image(
             400,//x
