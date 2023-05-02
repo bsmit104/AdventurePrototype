@@ -383,7 +383,7 @@ class Scene2 extends AdventureScene {
                         this.gotoScene('scene4');
                     //}
                 })
-                const fxShdow = this.arrowd.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
+                const fxshadow = this.arrowd.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
         this.add.tween({
             targets: this.arrowd,
             //scale: 1.05,
@@ -393,7 +393,7 @@ class Scene2 extends AdventureScene {
             repeat: -1
         });
         this.add.tween({
-            targets: fxShdow,
+            targets: fxshadow,
             x: 5,
             y: -5,
             duration: 800,
