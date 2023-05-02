@@ -874,23 +874,23 @@ class Scene9 extends AdventureScene {
                     this.showMessage("Honk, honk.");
                     //door.setText("🚪 unlocked door");
             })
-        //     const w = this.duckob.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
-        // this.add.tween({
-        //     targets: this.duckob,
-        //     //scale: 1.05,
-        //     scale: 1.1,
-        //     duration: 800,
-        //     yoyo: true,
-        //     repeat: -1
-        // });
-        // this.add.tween({
-        //     targets: w,
-        //     x: 5,
-        //     y: -5,
-        //     duration: 800,
-        //     yoyo: true,
-        //     repeat: -1
-        // })
+            const w = this.duckob.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
+        this.add.tween({
+            targets: this.duckob,
+            //scale: 1.05,
+            scale: 1.1,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        });
+        this.add.tween({
+            targets: w,
+            x: 5,
+            y: -5,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        })
 
 
         this.cam = this.add.image(
@@ -931,23 +931,23 @@ class Scene9 extends AdventureScene {
                 console.log("Clicked on the arrow to go back.");
                 this.gotoScene('scene2');
             });
-        //     const o = this.arrowdo.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
-        // this.add.tween({
-        //     targets: this.arrowdo,
-        //     //scale: 1.05,
-        //     scale: .55,
-        //     duration: 800,
-        //     yoyo: true,
-        //     repeat: -1
-        // });
-        // this.add.tween({
-        //     targets: o,
-        //     x: 5,
-        //     y: -5,
-        //     duration: 800,
-        //     yoyo: true,
-        //     repeat: -1
-        // })
+            const o = this.arrowdo.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
+        this.add.tween({
+            targets: this.arrowdo,
+            //scale: 1.05,
+            scale: .55,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        });
+        this.add.tween({
+            targets: o,
+            x: 5,
+            y: -5,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        })
 
 
         const pondo = this.add.image(0, 0, 'pond');
@@ -1080,23 +1080,23 @@ class Scene4 extends AdventureScene {
                     });
                 }
             })
-        //     const dob = this.deermanob.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
-        // this.add.tween({
-        //     targets: this.deermanob,
-        //     //scale: 1.05,
-        //     scale: 4.1,
-        //     duration: 800,
-        //     yoyo: true,
-        //     repeat: -1
-        // });
-        // this.add.tween({
-        //     targets: dob,
-        //     x: 5,
-        //     y: -5,
-        //     duration: 800,
-        //     yoyo: true,
-        //     repeat: -1
-        // })
+            const dob = this.deermanob.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
+        this.add.tween({
+            targets: this.deermanob,
+            //scale: 1.05,
+            scale: 4.1,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        });
+        this.add.tween({
+            targets: dob,
+            x: 5,
+            y: -5,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        })
 
         const forest2 = this.add.image(0, 0, 'righto');
         forest2.setOrigin(0);
@@ -1136,23 +1136,23 @@ class Scene5 extends AdventureScene {
             .on('pointerdown', () => {
                 this.showMessage("It reads: My love, My flower, my deer, Rest. I will miss you every day.");
             });
-        //     const newwrd = this.graveob1.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
-        // this.add.tween({
-        //     targets: this.graveob1,
-        //     //scale: 1.05,
-        //     scale: 1.35,
-        //     duration: 800,
-        //     yoyo: true,
-        //     repeat: -1
-        // });
-        // this.add.tween({
-        //     targets: newwrd,
-        //     x: 5,
-        //     y: -5,
-        //     duration: 800,
-        //     yoyo: true,
-        //     repeat: -1
-        // })
+            const newwrd = this.graveob1.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
+        this.add.tween({
+            targets: this.graveob1,
+            //scale: 1.05,
+            scale: 1.35,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        });
+        this.add.tween({
+            targets: newwrd,
+            x: 5,
+            y: -5,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        })
 
         this.graveob2 = this.add.image(
             750,//x
@@ -1170,23 +1170,23 @@ class Scene5 extends AdventureScene {
                 // or you humans are all alike
                 this.showMessagelong("The note reads: Forgive me stranger, I thought you were the hunter that killed my flower. I was forced into self defense, but you still did not deserve death. Neither did my wife.\nI am so sorry.");
             });
-        //     const newwod = this.graveob2.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
-        // this.add.tween({
-        //     targets: this.graveob2,
-        //     //scale: 1.05,
-        //     scale: 1.35,
-        //     duration: 800,
-        //     yoyo: true,
-        //     repeat: -1
-        // });
-        // this.add.tween({
-        //     targets: newwod,
-        //     x: 5,
-        //     y: -5,
-        //     duration: 800,
-        //     yoyo: true,
-        //     repeat: -1
-        // })
+            const newwod = this.graveob2.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
+        this.add.tween({
+            targets: this.graveob2,
+            //scale: 1.05,
+            scale: 1.35,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        });
+        this.add.tween({
+            targets: newwod,
+            x: 5,
+            y: -5,
+            duration: 800,
+            yoyo: true,
+            repeat: -1
+        })
 
             this.add.text(300, 1000, "finish the game", {fontSize: '40px'})
             //let finish = this.add.text(this.w * 0.6, this.w * 0.2, '(finish the game)')
