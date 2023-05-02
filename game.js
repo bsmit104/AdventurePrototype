@@ -874,7 +874,7 @@ class Scene9 extends AdventureScene {
                     this.showMessage("Honk, honk.");
                     //door.setText("🚪 unlocked door");
             })
-            const w = this.duckob.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
+            const fxshadow = this.duckob.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
         this.add.tween({
             targets: this.duckob,
             //scale: 1.05,
@@ -884,7 +884,7 @@ class Scene9 extends AdventureScene {
             repeat: -1
         });
         this.add.tween({
-            targets: w,
+            targets: fxshadow,
             x: 5,
             y: -5,
             duration: 800,
@@ -931,7 +931,7 @@ class Scene9 extends AdventureScene {
                 console.log("Clicked on the arrow to go back.");
                 this.gotoScene('scene2');
             });
-            const o = this.arrowdo.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
+            const bean = this.arrowdo.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
         this.add.tween({
             targets: this.arrowdo,
             //scale: 1.05,
@@ -941,7 +941,7 @@ class Scene9 extends AdventureScene {
             repeat: -1
         });
         this.add.tween({
-            targets: o,
+            targets: bean,
             x: 5,
             y: -5,
             duration: 800,
@@ -1080,7 +1080,7 @@ class Scene4 extends AdventureScene {
                     });
                 }
             })
-            const dob = this.deermanob.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
+            const chicken = this.deermanob.preFX.addShadow(0, 0, 0.002, 1, 0x333333, 5); // reduce blur, quality, and distance
         this.add.tween({
             targets: this.deermanob,
             //scale: 1.05,
@@ -1090,7 +1090,7 @@ class Scene4 extends AdventureScene {
             repeat: -1
         });
         this.add.tween({
-            targets: dob,
+            targets: chicken,
             x: 5,
             y: -5,
             duration: 800,
