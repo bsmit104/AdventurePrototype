@@ -968,6 +968,8 @@ class Scene4 extends AdventureScene {
         this.load.image('cam', 'cam.png');
         this.load.image('deerman', 'dearthedeer.png');
         this.load.image('righto', 'deepforest.png');
+        this.load.image('Abut', 'A.png');
+        this.load.image('Gbut', 'G.png');
         this.load.image('arrowdown', 'arrowdown.png');
     }
     onEnter() {
@@ -1061,7 +1063,53 @@ class Scene4 extends AdventureScene {
                     //rock throwing animation?
                 }
             })
+            this.abut = this.add.image(100, 100, 'Abut')
+            this.abut.setDepth(1)
+            this.abut.setScale(4)
+                .setInteractive()
+                .on('pointerdown', () => {
+                if (this.hasItem("Stick")) {
+                    this.loseItem("Stick");
+                    this.showMessagered("Die vermin!");
+                    //door.setText("🚪 unlocked door");
+                    this.gotoScene('scene5');
+                }
+                else {
+                    this.showMessage("I don't have a weapon.");
+                    this.tweens.add({
+                        targets: this.deermanob,
+                        x: '+=' + this.s,
+                        repeat: 2,
+                        yoyo: true,
+                        ease: 'Sine.inOut',
+                        duration: 100
+                    });
+                    //rock throwing animation?
+                }
+            })
             this.input.keyboard.on('keydown-G', () => {
+                if (this.hasItem("Poppy")) {
+                    this.loseItem("Poppy");
+                    this.showMessage("I know it hurts, but someday you will see your flower again.");
+                    //door.setText("🚪 unlocked door");
+                    this.gotoScene('scene6');
+                }
+                else {
+                    this.showMessage("I don't have a flower.");
+                    this.tweens.add({
+                        targets: this.deermanob,
+                        x: '+=' + this.s,
+                        repeat: 2,
+                        yoyo: true,
+                        ease: 'Sine.inOut',
+                        duration: 100
+                    });
+                }
+            })
+            this.gbut = this.add.image(200, 100, 'Gbut')
+            this.gbut.setDepth(1)
+            this.gbut.setScale(4)
+            .on('pointerdown', () => {
                 if (this.hasItem("Poppy")) {
                     this.loseItem("Poppy");
                     this.showMessage("I know it hurts, but someday you will see your flower again.");
@@ -1521,7 +1569,7 @@ const game = new Phaser.Game({
         width: 1920,
         height: 1080
     },
-    scene: [S0, Intro, Title, Scene1, Scene2, Scene3, Scene4, Scene9, Scene5, Scene6, Outro],
+    scene: [Scene4], //[S0, Intro, Title, Scene1, Scene2, Scene3, Scene4, Scene9, Scene5, Scene6, Outro],
     title: "Adventure Game",
 });
 
