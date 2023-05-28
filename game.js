@@ -1109,6 +1109,7 @@ class Scene4 extends AdventureScene {
             this.gbut = this.add.image(200, 100, 'Gbut')
             this.gbut.setDepth(1)
             this.gbut.setScale(4)
+            .setInteractive()
             .on('pointerdown', () => {
                 if (this.hasItem("Poppy")) {
                     this.loseItem("Poppy");
